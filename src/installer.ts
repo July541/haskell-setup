@@ -373,7 +373,7 @@ async function ghcup(
   if (tool === 'cabal' && version === 'head') {
     await ghcupCabalHead(os, bin);
   } else {
-    const returnCode = await exec(bin, ['install', tool, version]);
+    const returnCode = await exec(bin, ['install', tool, version, '-v']);
     if (returnCode === 0) await exec(bin, ['set', tool, version]);
   }
 }
