@@ -280,9 +280,16 @@ async function aptLibNCurses5(): Promise<boolean> {
     `Installing libcurses5 and libtinfo5 using apt-get (for ghc < 8.3)`
   );
 
+  // const returnCode = await exec(
+  //   // `sudo -- sh -c "apt-get update && apt-get -y install libncurses5 libtinfo5"`
+  //   `sudo -- sh -c "apt-get update && wget http://security.ubuntu.com/ubuntu/pool/universe/n/ncurses/libtinfo5_6.3-2ubuntu0.1_amd64.deb && apt-get -y install ./libtinfo5_6.3-2ubuntu0.1_amd64.deb"`
+  // );
+
   const returnCode = await exec(
-    `sudo -- sh -c "apt-get update && apt-get -y install libncurses5 libtinfo5"`
+    // `sudo -- sh -c "apt-get update && apt-get -y install libncurses5 libtinfo5"`
+    `sudo -- sh -c "echo "deb http://security.ubuntu.com/ubuntu focal-security main universe" > /etc/apt/sources.list.d/ubuntu-focal-sources.list; apt-get update && apt-get -y install libncurses5 libtinfo5"`
   );
+
   return returnCode === 0;
 }
 
