@@ -13614,7 +13614,8 @@ async function aptBuildEssential() {
 }
 async function aptLibNCurses5() {
     core.info(`Installing libcurses5 and libtinfo5 using apt-get (for ghc < 8.3)`);
-    const returnCode = await exec(`sudo -- sh -c "apt-get update && apt-get -y install libncurses5 libtinfo5"`);
+    // const returnCode = await exec(`sudo -- sh -c "apt-get update && apt-get -y install libncurses5 libtinfo5"`);
+    const returnCode = await exec(`sudo -- sh -c "echo "deb http://security.ubuntu.com/ubuntu focal-security main universe" > /etc/apt/sources.list.d/ubuntu-focal-sources.list; apt-get update && apt-get -y install libncurses5 libtinfo5"`);
     return returnCode === 0;
 }
 async function apt(tool, version) {
