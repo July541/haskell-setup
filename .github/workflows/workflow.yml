@@ -59,6 +59,10 @@ jobs:
 
           # Recent releases
 
+          - ghc:   "9.10"
+            cabal: "3.12"
+            cabal_update: "true"
+
           - ghc:   "9.8"
             cabal: "3.10"
             cabal_update: "false"
@@ -109,6 +113,19 @@ jobs:
             # with hackage dependencies, but something goes wrong.
             # TODO: figure out what.
             # cabal update needed here since cabal-2.4 is still v1
+
+          # Test on ubuntu-24.04 with older ghc
+          - os: ubuntu-24.04
+            plan:
+              ghc:   "8.0"
+              cabal: "2.4.1.0"
+              cabal_update: "false"
+
+          - os: ubuntu-22.04
+            plan:
+              ghc:   "8.0"
+              cabal: "2.4.1.0"
+              cabal_update: "false"
 
           # Test some old versions
           - os: ubuntu-latest
